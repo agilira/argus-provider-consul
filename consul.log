@@ -1,0 +1,1139 @@
+==> Starting Consul agent...
+               Version: '1.17.0'
+            Build Date: '2023-11-03 14:56:56 +0000 UTC'
+               Node ID: 'ec104ba7-f9e8-c1cf-8762-2352623e1fb8'
+             Node name: 'machine'
+            Datacenter: 'dc1' (Segment: '<all>')
+                Server: true (Bootstrap: false)
+           Client Addr: [127.0.0.1] (HTTP: 8500, HTTPS: -1, gRPC: 8502, gRPC-TLS: 8503, DNS: 8600)
+          Cluster Addr: 127.0.0.1 (LAN: 8301, WAN: 8302)
+     Gossip Encryption: false
+      Auto-Encrypt-TLS: false
+           ACL Enabled: false
+     Reporting Enabled: false
+    ACL Default Policy: allow
+             HTTPS TLS: Verify Incoming: false, Verify Outgoing: false, Min Version: TLSv1_2
+              gRPC TLS: Verify Incoming: false, Min Version: TLSv1_2
+      Internal RPC TLS: Verify Incoming: false, Verify Outgoing: false (Verify Hostname: false), Min Version: TLSv1_2
+
+==> Log data will now stream in as it occurs:
+
+2025-09-24T15:58:05.771+0200 [DEBUG] agent.grpc.balancer: switching server: target=consul://dc1.ec104ba7-f9e8-c1cf-8762-2352623e1fb8/server.dc1 from=<none> to=<none>
+2025-09-24T15:58:05.780+0200 [INFO]  agent.server.raft: initial configuration: index=1 servers="[{Suffrage:Voter ID:ec104ba7-f9e8-c1cf-8762-2352623e1fb8 Address:127.0.0.1:8300}]"
+2025-09-24T15:58:05.780+0200 [INFO]  agent.server.raft: entering follower state: follower="Node at 127.0.0.1:8300 [Follower]" leader-address= leader-id=
+2025-09-24T15:58:05.780+0200 [INFO]  agent.server.serf.wan: serf: EventMemberJoin: machine.dc1 127.0.0.1
+2025-09-24T15:58:05.781+0200 [INFO]  agent.server.serf.lan: serf: EventMemberJoin: machine 127.0.0.1
+2025-09-24T15:58:05.781+0200 [INFO]  agent.router: Initializing LAN area manager
+2025-09-24T15:58:05.781+0200 [DEBUG] agent.grpc.balancer: switching server: target=consul://dc1.ec104ba7-f9e8-c1cf-8762-2352623e1fb8/server.dc1 from=<none> to=dc1-127.0.0.1:8300
+2025-09-24T15:58:05.781+0200 [INFO]  agent.server: Adding LAN server: server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T15:58:05.781+0200 [INFO]  agent.server: Handled event for server in area: event=member-join server=machine.dc1 area=wan
+2025-09-24T15:58:05.782+0200 [INFO]  agent.server.autopilot: reconciliation now disabled
+2025-09-24T15:58:05.784+0200 [DEBUG] agent.server.autopilot: autopilot is now running
+2025-09-24T15:58:05.784+0200 [DEBUG] agent.server.autopilot: state update routine is now running
+2025-09-24T15:58:05.784+0200 [INFO]  agent.server.cert-manager: initialized server certificate management
+2025-09-24T15:58:05.784+0200 [DEBUG] agent.hcp_manager: HCP manager starting
+2025-09-24T15:58:05.784+0200 [INFO]  agent: Started DNS server: address=127.0.0.1:8600 network=tcp
+2025-09-24T15:58:05.784+0200 [INFO]  agent: Started DNS server: address=127.0.0.1:8600 network=udp
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/catalog/v2beta1/serviceendpoints/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/catalog/v2beta1/node/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/demo/v1/album/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/demo/v1/concept/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/proxyconfiguration/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/tcproute/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/catalog/v2beta1/healthstatus/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/auth/v2beta1/trafficpermissions/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/demo/v1/recordlabel/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/demo/v2/artist/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/destinationpolicy/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/catalog/v2beta1/workload/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/httproute/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/tenancy/v1alpha1/namespace/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/computedroutes/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/auth/v2beta1/computedtrafficpermissions/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/demo/v2/album/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/internal/v1/tombstone/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/demo/v1/artist/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/computedproxyconfiguration/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/proxystatetemplate/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/computedexplicitdestinations/
+2025-09-24T15:58:05.784+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/catalog/v2beta1/failoverpolicy/
+2025-09-24T15:58:05.785+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/auth/v2beta1/workloadidentity/
+2025-09-24T15:58:05.785+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/demo/v1/executive/
+2025-09-24T15:58:05.785+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/destinations/
+2025-09-24T15:58:05.785+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/mesh/v2beta1/grpcroute/
+2025-09-24T15:58:05.785+0200 [INFO]  agent.http: Registered resource endpoint: endpoint=/catalog/v2beta1/service/
+2025-09-24T15:58:05.785+0200 [INFO]  agent: Starting server: address=127.0.0.1:8500 network=tcp protocol=http
+2025-09-24T15:58:05.785+0200 [INFO]  agent: Started gRPC listeners: port_name=grpc address=127.0.0.1:8502 network=tcp
+2025-09-24T15:58:05.785+0200 [INFO]  agent: started state syncer
+2025-09-24T15:58:05.785+0200 [INFO]  agent: Consul agent running!
+2025-09-24T15:58:05.785+0200 [INFO]  agent: Started gRPC listeners: port_name=grpc_tls address=127.0.0.1:8503 network=tcp
+2025-09-24T15:58:05.847+0200 [WARN]  agent.server.raft: heartbeat timeout reached, starting election: last-leader-addr= last-leader-id=
+2025-09-24T15:58:05.847+0200 [INFO]  agent.server.raft: entering candidate state: node="Node at 127.0.0.1:8300 [Candidate]" term=2
+2025-09-24T15:58:05.847+0200 [DEBUG] agent.server.raft: voting for self: term=2 id=ec104ba7-f9e8-c1cf-8762-2352623e1fb8
+2025-09-24T15:58:05.847+0200 [DEBUG] agent.server.raft: calculated votes needed: needed=1 term=2
+2025-09-24T15:58:05.847+0200 [DEBUG] agent.server.raft: vote granted: from=ec104ba7-f9e8-c1cf-8762-2352623e1fb8 term=2 tally=1
+2025-09-24T15:58:05.847+0200 [INFO]  agent.server.raft: election won: term=2 tally=1
+2025-09-24T15:58:05.847+0200 [INFO]  agent.server.raft: entering leader state: leader="Node at 127.0.0.1:8300 [Leader]"
+2025-09-24T15:58:05.847+0200 [DEBUG] agent.hcp_manager: HCP triggering status update
+2025-09-24T15:58:05.848+0200 [INFO]  agent.server: cluster leadership acquired
+2025-09-24T15:58:05.848+0200 [DEBUG] agent.controller-runtime: controller running: managed_type=demo.v2.Artist
+2025-09-24T15:58:05.848+0200 [DEBUG] agent.controller-runtime: controller running: managed_type=internal.v1.Tombstone
+2025-09-24T15:58:05.848+0200 [INFO]  agent.server: New leader elected: payload=machine
+2025-09-24T15:58:05.848+0200 [INFO]  agent.server.autopilot: reconciliation now enabled
+2025-09-24T15:58:05.848+0200 [INFO]  agent.leader: started routine: routine="federation state anti-entropy"
+2025-09-24T15:58:05.848+0200 [INFO]  agent.leader: started routine: routine="federation state pruning"
+2025-09-24T15:58:05.848+0200 [INFO]  agent.leader: started routine: routine="streaming peering resources"
+2025-09-24T15:58:05.848+0200 [INFO]  agent.leader: started routine: routine="metrics for streaming peering resources"
+2025-09-24T15:58:05.848+0200 [INFO]  agent.leader: started routine: routine="peering deferred deletion"
+2025-09-24T15:58:05.849+0200 [DEBUG] connect.ca.consul: consul CA provider configured: id=fb:50:9b:45:1a:65:15:c1:68:57:73:5f:da:cd:b8:0d:0f:e2:26:eb:68:66:43:11:85:9d:67:a9:7a:56:9c:b9 is_primary=true
+2025-09-24T15:58:05.850+0200 [INFO]  connect.ca: updated root certificates from primary datacenter
+2025-09-24T15:58:05.850+0200 [INFO]  connect.ca: initialized primary datacenter CA with provider: provider=consul
+2025-09-24T15:58:05.850+0200 [INFO]  agent.leader: started routine: routine="intermediate cert renew watch"
+2025-09-24T15:58:05.850+0200 [INFO]  agent.leader: started routine: routine="CA root pruning"
+2025-09-24T15:58:05.850+0200 [INFO]  agent.leader: started routine: routine="CA root expiration metric"
+2025-09-24T15:58:05.850+0200 [INFO]  agent.leader: started routine: routine="CA signing expiration metric"
+2025-09-24T15:58:05.850+0200 [INFO]  agent.leader: started routine: routine="virtual IP version check"
+2025-09-24T15:58:05.850+0200 [INFO]  agent.leader: started routine: routine="config entry controllers"
+2025-09-24T15:58:05.851+0200 [DEBUG] agent.server: successfully established leadership: duration=2.750505ms
+2025-09-24T15:58:05.851+0200 [INFO]  agent.leader: stopping routine: routine="virtual IP version check"
+2025-09-24T15:58:05.851+0200 [INFO]  agent.leader: stopped routine: routine="virtual IP version check"
+2025-09-24T15:58:05.851+0200 [INFO]  agent.server: member joined, marking health alive: member=machine partition=default
+2025-09-24T15:58:05.852+0200 [DEBUG] agent.server.xds_capacity_controller: updating drain rate limit: rate_limit=1
+2025-09-24T15:58:05.869+0200 [DEBUG] agent.server.cert-manager: got cache update event: correlationID=leaf error=<nil>
+2025-09-24T15:58:05.870+0200 [DEBUG] agent.server.cert-manager: leaf certificate watch fired - updating auto TLS certificate: uri=spiffe://782284e3-e383-3c80-191a-b70cb6a0ab83.consul/agent/server/dc/dc1
+2025-09-24T15:58:06.070+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T15:58:06.071+0200 [INFO]  agent: Synced node info
+2025-09-24T15:58:06.287+0200 [INFO]  agent.server: federation state anti-entropy synced
+2025-09-24T15:58:06.784+0200 [DEBUG] agent.server.cert-manager: CA config watch fired - updating auto TLS server name: name=server.dc1.peering.782284e3-e383-3c80-191a-b70cb6a0ab83.consul
+2025-09-24T15:58:08.637+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T15:58:08.637+0200 [DEBUG] agent: Node info in sync
+2025-09-24T15:58:08.637+0200 [DEBUG] agent: Node info in sync
+2025-09-24T15:58:20.845+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:41426 latency="199.554µs"
+2025-09-24T15:58:31.409+0200 [DEBUG] agent.http: Request finished: method=PUT url=/v1/kv/config/database from=127.0.0.1:46382 latency="342.632µs"
+2025-09-24T15:58:40.831+0200 [DEBUG] agent.http: Request finished: method=PUT url=/v1/kv/config/cache from=127.0.0.1:43326 latency="384.36µs"
+2025-09-24T15:58:40.909+0200 [DEBUG] agent.http: Request finished: method=PUT url=/v1/kv/service/auth/config from=127.0.0.1:43328 latency="263.825µs"
+2025-09-24T15:58:46.906+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:37646 latency="236.463µs"
+2025-09-24T15:58:55.043+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:59476 latency="78.608µs"
+2025-09-24T15:58:55.044+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/test/key from=127.0.0.1:59476 latency="67.146µs"
+2025-09-24T15:58:55.044+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/test/key?wait=300000ms from=127.0.0.1:59476 latency="46.337µs"
+2025-09-24T15:58:58.047+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:59486 latency="91.191µs"
+2025-09-24T15:58:58.048+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/argus-test/config from=127.0.0.1:59486 latency="81.593µs"
+2025-09-24T15:58:58.049+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader?dc=dc1 from=127.0.0.1:59488 latency="105.207µs"
+2025-09-24T15:58:58.050+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/test/key?dc=dc1 from=127.0.0.1:59488 latency="72.506µs"
+2025-09-24T15:59:40.998+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T15:59:40.998+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:00:05.782+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:00:05.784+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:00:06.330+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:33470 latency="78.667µs"
+2025-09-24T16:00:06.330+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33470 latency="75.802µs"
+2025-09-24T16:00:06.331+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:33470 latency="29.766µs"
+2025-09-24T16:00:06.331+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/cache from=127.0.0.1:33470 latency="98.746µs"
+2025-09-24T16:00:06.332+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:33470 latency="60.072µs"
+2025-09-24T16:00:06.332+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/service/auth/config from=127.0.0.1:33470 latency="70.863µs"
+2025-09-24T16:00:06.333+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/argus-watch-test/config?wait=300000ms from=127.0.0.1:33476 latency="83.537µs"
+2025-09-24T16:00:11.339+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33618 latency="196.088µs"
+2025-09-24T16:00:11.340+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33654 latency="54.041µs"
+2025-09-24T16:00:11.340+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33670 latency="115.747µs"
+2025-09-24T16:00:11.339+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33608 latency="93.405µs"
+2025-09-24T16:00:11.339+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33588 latency="87.494µs"
+2025-09-24T16:00:11.339+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33554 latency="55.654µs"
+2025-09-24T16:00:11.339+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33520 latency="61.525µs"
+2025-09-24T16:00:11.339+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33494 latency="55.724µs"
+2025-09-24T16:00:11.339+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33506 latency="113.943µs"
+2025-09-24T16:00:11.339+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33532 latency="243.115µs"
+2025-09-24T16:00:11.339+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33544 latency="66.945µs"
+2025-09-24T16:00:11.339+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33686 latency="823.032µs"
+2025-09-24T16:00:11.339+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33634 latency="130.134µs"
+2025-09-24T16:00:11.339+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33550 latency="64.581µs"
+2025-09-24T16:00:11.339+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33582 latency="52.649µs"
+2025-09-24T16:00:11.339+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33602 latency="91.401µs"
+2025-09-24T16:00:11.339+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33486 latency="71.363µs"
+2025-09-24T16:00:11.339+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33566 latency="86.493µs"
+2025-09-24T16:00:11.339+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33642 latency="88.025µs"
+2025-09-24T16:00:11.340+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33492 latency="108.804µs"
+2025-09-24T16:00:11.343+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/does/not/exist from=127.0.0.1:33694 latency="132.248µs"
+2025-09-24T16:00:11.343+0200 [WARN]  agent.server.rpc: RPC request for DC is currently failing as no path was found: datacenter=nonexistent method=KVS.Get
+2025-09-24T16:00:11.343+0200 [ERROR] agent.http: Request error: method=GET url=/v1/kv/config/database?dc=nonexistent from=127.0.0.1:33694 error="No path to datacenter"
+2025-09-24T16:00:11.343+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database?dc=nonexistent from=127.0.0.1:33694 latency="143.63µs"
+2025-09-24T16:00:11.344+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:33694 latency="155.872µs"
+2025-09-24T16:01:05.634+0200 [DEBUG] agent.http: Request finished: method=PUT url=/v1/kv/live-test/config from=127.0.0.1:37898 latency="365.566µs"
+2025-09-24T16:01:05.639+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/live-test/config?wait=300000ms from=127.0.0.1:37914 latency="121.869µs"
+2025-09-24T16:01:10.706+0200 [DEBUG] agent.http: Request finished: method=PUT url=/v1/kv/live-test/config from=127.0.0.1:37924 latency="282.149µs"
+2025-09-24T16:01:10.706+0200 [DEBUG] agent.http: Request finished: method=GET url="/v1/kv/live-test/config?index=30&wait=300000ms" from=127.0.0.1:37914 latency=5.066133113s
+2025-09-24T16:01:13.779+0200 [DEBUG] agent.http: Request finished: method=PUT url=/v1/kv/live-test/config from=127.0.0.1:37928 latency="420.007µs"
+2025-09-24T16:01:13.779+0200 [DEBUG] agent.http: Request finished: method=GET url="/v1/kv/live-test/config?index=32&wait=300000ms" from=127.0.0.1:37914 latency=3.07235962s
+2025-09-24T16:01:16.850+0200 [DEBUG] agent.http: Request finished: method=PUT url=/v1/kv/live-test/config from=127.0.0.1:39286 latency="395.461µs"
+2025-09-24T16:01:16.850+0200 [DEBUG] agent.http: Request finished: method=GET url="/v1/kv/live-test/config?index=33&wait=300000ms" from=127.0.0.1:37914 latency=3.070828381s
+2025-09-24T16:01:21.945+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:01:21.945+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:01:35.723+0200 [DEBUG] agent.http: Request finished: method=DELETE url=/v1/kv/live-test/config from=127.0.0.1:49500 latency="264.786µs"
+2025-09-24T16:01:35.723+0200 [DEBUG] agent.http: Request finished: method=GET url="/v1/kv/live-test/config?index=34&wait=300000ms" from=127.0.0.1:37914 latency=18.871817684s
+2025-09-24T16:01:47.947+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:60786 latency="75.451µs"
+2025-09-24T16:01:47.948+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/nonexistent?wait=300000ms from=127.0.0.1:60788 latency="90.951µs"
+2025-09-24T16:01:49.950+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/test?dc=dc1 from=127.0.0.1:60800 latency="139.251µs"
+2025-09-24T16:01:49.951+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/test?wait=300000ms from=127.0.0.1:60814 latency="121.087µs"
+2025-09-24T16:01:49.963+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:60824 latency="92.894µs"
+2025-09-24T16:01:50.228+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/test from=127.0.0.1:60832 latency="158.637µs"
+2025-09-24T16:01:50.229+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:60834 latency="77.014µs"
+2025-09-24T16:01:53.233+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/nonexistent from=127.0.0.1:60850 latency="128.321µs"
+2025-09-24T16:01:53.236+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:60854 latency="89.798µs"
+2025-09-24T16:01:53.236+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60854 latency="89.107µs"
+2025-09-24T16:01:53.237+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:60854 latency="51.296µs"
+2025-09-24T16:01:53.237+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/cache from=127.0.0.1:60854 latency="100.157µs"
+2025-09-24T16:01:53.238+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:60854 latency="60.754µs"
+2025-09-24T16:01:53.239+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/service/auth/config from=127.0.0.1:60854 latency="144.16µs"
+2025-09-24T16:01:53.240+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/argus-watch-test/config?wait=300000ms from=127.0.0.1:60866 latency="127.229µs"
+2025-09-24T16:01:58.243+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60568 latency="119.003µs"
+2025-09-24T16:01:58.243+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60686 latency="158.457µs"
+2025-09-24T16:01:58.243+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60584 latency="68.008µs"
+2025-09-24T16:01:58.243+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60632 latency="208.191µs"
+2025-09-24T16:01:58.243+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60676 latency="70.792µs"
+2025-09-24T16:01:58.243+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60614 latency="116.769µs"
+2025-09-24T16:01:58.243+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60554 latency="68.539µs"
+2025-09-24T16:01:58.243+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60600 latency="62.927µs"
+2025-09-24T16:01:58.243+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60710 latency="67.867µs"
+2025-09-24T16:01:58.243+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60658 latency="177.973µs"
+2025-09-24T16:01:58.243+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60626 latency="64.371µs"
+2025-09-24T16:01:58.243+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60654 latency="165.21µs"
+2025-09-24T16:01:58.243+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60712 latency="215.523µs"
+2025-09-24T16:01:58.243+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60698 latency="127.699µs"
+2025-09-24T16:01:58.243+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60650 latency="113.052µs"
+2025-09-24T16:01:58.243+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60638 latency="337.202µs"
+2025-09-24T16:01:58.243+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60664 latency="94.717µs"
+2025-09-24T16:01:58.243+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60572 latency="60.073µs"
+2025-09-24T16:01:58.243+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60544 latency="77.516µs"
+2025-09-24T16:01:58.243+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60582 latency="72.546µs"
+2025-09-24T16:01:58.246+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/does/not/exist from=127.0.0.1:60716 latency="135.624µs"
+2025-09-24T16:01:58.246+0200 [WARN]  agent.server.rpc: RPC request for DC is currently failing as no path was found: datacenter=nonexistent method=KVS.Get
+2025-09-24T16:01:58.246+0200 [ERROR] agent.http: Request error: method=GET url=/v1/kv/config/database?dc=nonexistent from=127.0.0.1:60716 error="No path to datacenter"
+2025-09-24T16:01:58.247+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database?dc=nonexistent from=127.0.0.1:60716 latency="116.017µs"
+2025-09-24T16:01:58.247+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:60716 latency="71.033µs"
+2025-09-24T16:01:58.248+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:60724 latency="65.884µs"
+2025-09-24T16:01:58.248+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/test/key from=127.0.0.1:60724 latency="56.606µs"
+2025-09-24T16:01:58.248+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/test/key?wait=300000ms from=127.0.0.1:60724 latency="52.708µs"
+2025-09-24T16:02:01.250+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:60726 latency="117.53µs"
+2025-09-24T16:02:01.250+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/argus-test/config from=127.0.0.1:60726 latency="67.827µs"
+2025-09-24T16:02:01.251+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader?dc=dc1 from=127.0.0.1:60736 latency="91.671µs"
+2025-09-24T16:02:01.252+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/test/key?dc=dc1 from=127.0.0.1:60736 latency="54.351µs"
+2025-09-24T16:02:16.068+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:02:40.193+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:02:49.621+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:02:49.621+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:03:13.940+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:51542 latency="86.803µs"
+2025-09-24T16:03:13.941+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:51546 latency="71.163µs"
+2025-09-24T16:03:13.942+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:51550 latency="64.892µs"
+2025-09-24T16:04:10.370+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:04:10.370+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:04:11.427+0200 [DEBUG] agent.http: Request finished: method=GET url="/v1/kv/test/key?index=21&wait=300000ms" from=127.0.0.1:59476 latency=5m16.382380791s
+2025-09-24T16:04:56.353+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:05:01.316+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:05:15.154+0200 [DEBUG] agent.http: Request finished: method=GET url="/v1/kv/argus-watch-test/config?index=21&wait=300000ms" from=127.0.0.1:33476 latency=5m8.820759348s
+2025-09-24T16:05:17.205+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:05:17.206+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:06:53.112+0200 [DEBUG] agent.http: Request finished: method=GET url="/v1/kv/config/test?index=36&wait=300000ms" from=127.0.0.1:60814 latency=5m3.159965149s
+2025-09-24T16:07:02.347+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:07:02.910+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:07:02.910+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:07:04.406+0200 [DEBUG] agent.http: Request finished: method=GET url="/v1/kv/argus-watch-test/config?index=36&wait=300000ms" from=127.0.0.1:60866 latency=5m11.166154431s
+2025-09-24T16:07:05.651+0200 [DEBUG] agent.http: Request finished: method=GET url="/v1/kv/config/nonexistent?index=36&wait=300000ms" from=127.0.0.1:60788 latency=5m17.702417677s
+2025-09-24T16:07:10.699+0200 [DEBUG] agent.http: Request finished: method=GET url="/v1/kv/test/key?index=36&wait=300000ms" from=127.0.0.1:60724 latency=5m12.449912766s
+2025-09-24T16:07:19.735+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:08:52.297+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:08:52.297+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:09:13.906+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:09:54.663+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:09:54.664+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:10:09.471+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:11:47.515+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:11:47.515+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:12:09.189+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:12:37.154+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/nonexistent from=127.0.0.1:57260 latency="122.179µs"
+2025-09-24T16:12:50.886+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/nonexistent from=127.0.0.1:57764 latency="116.568µs"
+2025-09-24T16:12:50.888+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:57778 latency="97.423µs"
+2025-09-24T16:12:50.889+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:57778 latency="128.761µs"
+2025-09-24T16:12:50.889+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:57778 latency="46.717µs"
+2025-09-24T16:12:50.890+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/cache from=127.0.0.1:57778 latency="130.965µs"
+2025-09-24T16:12:50.891+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:57778 latency="79.089µs"
+2025-09-24T16:12:50.891+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/service/auth/config from=127.0.0.1:57778 latency="112.4µs"
+2025-09-24T16:12:50.893+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/argus-watch-test/config?wait=300000ms from=127.0.0.1:57792 latency="119.634µs"
+2025-09-24T16:12:55.894+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36776 latency="76.172µs"
+2025-09-24T16:12:55.894+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36772 latency="91.352µs"
+2025-09-24T16:12:55.894+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36746 latency="174.998µs"
+2025-09-24T16:12:55.895+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36776 latency="117.45µs"
+2025-09-24T16:12:55.895+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36762 latency="100.108µs"
+2025-09-24T16:12:55.895+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36766 latency="106.47µs"
+2025-09-24T16:12:55.895+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36724 latency="82.355µs"
+2025-09-24T16:12:55.895+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36732 latency="122.149µs"
+2025-09-24T16:12:55.895+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36746 latency="50.665µs"
+2025-09-24T16:12:55.895+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36772 latency="61.355µs"
+2025-09-24T16:12:55.895+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36780 latency="67.186µs"
+2025-09-24T16:12:55.896+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36792 latency="68.429µs"
+2025-09-24T16:12:55.896+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36808 latency="88.606µs"
+2025-09-24T16:12:55.896+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36804 latency="86.643µs"
+2025-09-24T16:12:55.896+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36832 latency="65.483µs"
+2025-09-24T16:12:55.896+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36830 latency="80.942µs"
+2025-09-24T16:12:55.896+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36848 latency="125.876µs"
+2025-09-24T16:12:55.896+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36860 latency="83.036µs"
+2025-09-24T16:12:55.896+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36862 latency="74.579µs"
+2025-09-24T16:12:55.896+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36816 latency="80.151µs"
+2025-09-24T16:12:55.897+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/does/not/exist from=127.0.0.1:36910 latency="107.512µs"
+2025-09-24T16:12:55.898+0200 [WARN]  agent.server.rpc: RPC request for DC is currently failing as no path was found: datacenter=nonexistent method=KVS.Get
+2025-09-24T16:12:55.898+0200 [ERROR] agent.http: Request error: method=GET url=/v1/kv/config/database?dc=nonexistent from=127.0.0.1:36910 error="No path to datacenter"
+2025-09-24T16:12:55.898+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database?dc=nonexistent from=127.0.0.1:36910 latency="214.843µs"
+2025-09-24T16:12:55.898+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/config/database from=127.0.0.1:36910 latency="99.447µs"
+2025-09-24T16:12:55.900+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:36916 latency="82.935µs"
+2025-09-24T16:12:55.900+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/test/key from=127.0.0.1:36916 latency="79.088µs"
+2025-09-24T16:12:55.901+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/test/key?wait=300000ms from=127.0.0.1:36916 latency="58.129µs"
+2025-09-24T16:12:58.043+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:12:58.902+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader from=127.0.0.1:36918 latency="82.434µs"
+2025-09-24T16:12:58.902+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/argus-test/config from=127.0.0.1:36918 latency="88.626µs"
+2025-09-24T16:12:58.903+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/status/leader?dc=dc1 from=127.0.0.1:36928 latency="88.436µs"
+2025-09-24T16:12:58.904+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/test/key?dc=dc1 from=127.0.0.1:36928 latency="135.714µs"
+2025-09-24T16:13:39.058+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:13:39.058+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:13:42.876+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/nonexistent from=127.0.0.1:53036 latency="111.129µs"
+2025-09-24T16:14:37.750+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:15:22.165+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:15:22.166+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:15:26.353+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:16:40.094+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:16:40.094+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:16:47.776+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:17:52.470+0200 [DEBUG] agent.http: Request finished: method=GET url="/v1/kv/argus-watch-test/config?index=36&wait=300000ms" from=127.0.0.1:57792 latency=5m1.576690689s
+2025-09-24T16:18:00.210+0200 [DEBUG] agent.http: Request finished: method=GET url="/v1/kv/test/key?index=36&wait=300000ms" from=127.0.0.1:36916 latency=5m4.309025273s
+2025-09-24T16:18:16.068+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:18:32.626+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:18:32.626+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:18:52.417+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:19:37.218+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:19:37.218+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:21:03.027+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:21:04.424+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:21:04.424+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:21:49.119+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:22:07.019+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:22:07.019+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:23:07.129+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:23:07.129+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:23:19.462+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:24:26.515+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:24:38.596+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:24:38.596+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:25:57.410+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:25:57.411+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:26:16.067+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:27:16.334+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:27:16.334+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:27:23.578+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:28:31.259+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:28:48.103+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:28:48.103+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:29:52.285+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:30:45.593+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:30:45.593+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:31:02.337+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:32:04.311+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:32:04.311+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:32:44.066+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:33:43.416+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:33:43.416+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:33:46.017+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:35:23.626+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:35:23.626+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:35:27.584+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:36:28.697+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:36:58.842+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:36:58.843+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:38:01.556+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:38:51.465+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:38:51.465+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:39:01.237+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:39:51.592+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:39:51.592+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:40:17.425+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:41:07.497+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:41:12.079+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:41:12.079+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:42:34.619+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:42:34.619+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:42:37.882+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:43:19.682+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:43:57.833+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:43:57.833+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:44:58.697+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:45:26.034+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:45:26.034+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:45:49.017+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:46:57.153+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:46:57.153+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:47:51.089+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:48:34.619+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:48:53.701+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:48:53.701+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:50:07.175+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:50:07.175+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:50:09.869+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:50:57.313+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:51:09.413+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:51:09.413+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:52:23.459+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:52:44.392+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:52:44.393+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:53:39.270+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:54:06.854+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:54:06.854+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:54:32.723+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:55:38.308+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:55:38.308+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:56:26.182+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:56:58.973+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/nonexistent from=127.0.0.1:53880 latency="117.249µs"
+2025-09-24T16:57:13.229+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:57:28.267+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:57:28.267+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:58:08.898+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/nonexistent from=127.0.0.1:59470 latency="112.22µs"
+2025-09-24T16:58:55.137+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T16:58:55.137+0200 [DEBUG] agent: Node info in sync
+2025-09-24T16:59:00.741+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T16:59:13.796+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:00:08.826+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:00:08.826+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:01:26.584+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:01:31.077+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:01:31.077+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:01:35.415+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:03:07.347+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:03:07.347+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:03:47.992+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:04:18.917+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:04:18.918+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:04:24.076+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:06:14.882+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:06:14.882+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:06:20.200+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:06:55.415+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:07:37.569+0200 [DEBUG] agent.http: Request finished: method=GET url=/v1/kv/nonexistent from=127.0.0.1:59292 latency="89.588µs"
+2025-09-24T17:07:43.953+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:07:43.953+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:08:54.892+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:09:17.034+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:09:17.034+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:09:42.737+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:10:26.968+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:10:26.968+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:11:53.839+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:12:08.452+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:12:20.941+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:12:20.941+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:13:53.014+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:13:53.014+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:14:08.556+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:14:12.136+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:15:07.258+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:15:07.258+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:16:16.952+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:16:16.952+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:16:37.586+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:16:54.038+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:17:51.861+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:17:51.861+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:19:06.932+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:19:22.604+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:19:22.604+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:19:51.928+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:20:40.603+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:20:40.603+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:21:47.376+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:22:28.458+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:22:28.458+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:22:33.650+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:23:55.636+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:23:55.636+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:24:31.696+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:24:58.151+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:25:28.337+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:25:28.337+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:26:42.019+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:27:07.766+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:27:07.766+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:27:08.670+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:28:42.838+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:28:42.838+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:29:12.858+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:29:15.192+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:29:59.861+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:29:59.861+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:31:43.226+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:31:43.226+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:31:53.437+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:31:59.973+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:32:55.627+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:32:55.627+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:34:01.819+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:34:01.819+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:34:18.686+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:34:37.353+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:35:49.996+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:35:49.996+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:36:58.119+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:37:29.695+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:37:29.695+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:37:34.503+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:39:17.623+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:39:19.845+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:39:19.846+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:40:16.667+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:41:12.365+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:41:12.365+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:41:52.073+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:42:16.950+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:42:22.821+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:42:22.821+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:43:28.830+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:43:28.830+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:44:13.277+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:44:55.289+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:44:55.289+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:45:03.751+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:46:25.410+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:46:47.168+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:46:47.168+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:47:07.315+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:48:35.865+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:48:43.170+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:48:43.170+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:49:22.461+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:50:08.429+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:50:08.429+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:50:39.015+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:51:11.509+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:51:11.509+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:51:37.338+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:53:02.945+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:53:02.945+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:53:11.675+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:54:04.781+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:54:11.437+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:54:11.437+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:55:41.019+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:55:58.057+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:55:58.057+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:57:00.587+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:57:06.848+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:57:06.848+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:57:49.793+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T17:58:57.034+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T17:58:57.034+0200 [DEBUG] agent: Node info in sync
+2025-09-24T17:59:14.274+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:00:38.562+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:00:40.441+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:00:40.441+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:01:42.373+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:01:42.447+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:01:42.447+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:03:18.545+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:03:32.728+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:03:32.728+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:04:04.690+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:04:37.377+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:04:37.377+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:05:57.932+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:06:04.550+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:06:04.550+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:07:02.089+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:07:25.051+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:07:25.051+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:08:15.792+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:09:08.054+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:09:08.054+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:09:49.521+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:10:15.134+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:10:15.134+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:10:17.247+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:11:53.794+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:11:53.795+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:12:24.986+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:13:10.501+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:13:20.991+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:13:20.992+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:14:47.008+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:14:57.620+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:14:57.620+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:15:24.262+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:16:01.096+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:16:01.096+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:17:18.878+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:17:18.878+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:17:34.850+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:18:19.360+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:18:27.725+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:18:27.725+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:19:51.804+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:19:51.804+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:20:31.833+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:21:15.832+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:21:19.709+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:21:19.709+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:22:34.958+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:22:34.958+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:23:27.315+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:23:46.309+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:23:59.802+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:23:59.802+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:25:22.514+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:25:22.514+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:26:08.698+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:26:09.963+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:26:41.429+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:26:41.429+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:28:18.469+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:28:18.469+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:28:25.908+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:28:58.538+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:30:07.291+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:30:07.291+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:30:46.949+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:31:30.045+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:31:30.045+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:31:53.153+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:32:40.316+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:32:40.316+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:32:47.146+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:33:44.054+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:33:44.055+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:34:10.854+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:35:10.637+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:35:30.122+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:35:30.122+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:36:40.325+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:37:17.124+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:37:25.982+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:37:25.982+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:38:46.149+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:38:46.149+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:39:20.570+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:39:31.067+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:40:33.546+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:40:33.547+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:41:43.712+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:41:43.712+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:41:50.465+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:41:57.154+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:43:30.246+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:43:30.246+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:43:55.286+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:44:36.145+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:44:47.139+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:44:47.139+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:46:39.110+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:46:39.111+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:46:44.673+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:46:49.884+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:48:21.555+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:48:21.555+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:49:07.027+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:49:31.316+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:50:14.857+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:50:14.857+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:51:23.616+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:51:32.314+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:51:32.314+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:51:49.000+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:52:35.863+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:52:35.863+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:53:42.723+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:53:42.723+0200 [DEBUG] agent: Node info in sync
+2025-09-24T18:53:54.621+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:54:30.504+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T18:55:42.032+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T18:55:42.033+0200 [DEBUG] agent: Node info in sync
+2025-09-24T21:37:32.025+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T21:37:41.424+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T21:37:41.424+0200 [DEBUG] agent: Node info in sync
+2025-09-24T21:38:06.021+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T21:39:33.970+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T21:39:33.970+0200 [DEBUG] agent: Node info in sync
+2025-09-24T21:39:52.073+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T21:40:36.663+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T21:40:36.663+0200 [DEBUG] agent: Node info in sync
+2025-09-24T21:41:00.054+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T21:42:00.269+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T21:42:00.270+0200 [DEBUG] agent: Node info in sync
+2025-09-24T21:42:05.475+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T21:43:48.105+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T21:43:48.106+0200 [DEBUG] agent: Node info in sync
+2025-09-24T21:43:52.814+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T21:44:37.968+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T21:45:47.133+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T21:45:47.133+0200 [DEBUG] agent: Node info in sync
+2025-09-24T21:46:06.760+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T21:47:20.903+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T21:47:38.414+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T21:47:38.415+0200 [DEBUG] agent: Node info in sync
+2025-09-24T21:48:45.471+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T21:49:00.823+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T21:49:00.823+0200 [DEBUG] agent: Node info in sync
+2025-09-24T21:50:00.732+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T21:50:36.738+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T21:50:36.738+0200 [DEBUG] agent: Node info in sync
+2025-09-24T21:51:28.813+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T21:51:51.850+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T21:51:51.850+0200 [DEBUG] agent: Node info in sync
+2025-09-24T21:52:18.458+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T21:53:29.210+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T21:53:29.211+0200 [DEBUG] agent: Node info in sync
+2025-09-24T21:54:24.559+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T21:54:48.353+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T21:55:26.278+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T21:55:26.278+0200 [DEBUG] agent: Node info in sync
+2025-09-24T21:56:26.406+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T21:56:26.407+0200 [DEBUG] agent: Node info in sync
+2025-09-24T21:56:49.533+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T21:57:14.267+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T21:57:39.333+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T21:57:39.333+0200 [DEBUG] agent: Node info in sync
+2025-09-24T21:58:51.084+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T21:58:51.084+0200 [DEBUG] agent: Node info in sync
+2025-09-24T21:58:57.902+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T22:00:09.270+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T22:00:29.901+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T22:00:29.902+0200 [DEBUG] agent: Node info in sync
+2025-09-24T22:01:32.622+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T22:01:32.623+0200 [DEBUG] agent: Node info in sync
+2025-09-24T22:01:51.549+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T22:02:42.343+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T22:02:50.606+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T22:02:50.607+0200 [DEBUG] agent: Node info in sync
+2025-09-24T22:04:09.863+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T22:04:18.105+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T22:04:18.105+0200 [DEBUG] agent: Node info in sync
+2025-09-24T22:05:23.031+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T22:05:58.112+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T22:05:58.112+0200 [DEBUG] agent: Node info in sync
+2025-09-24T22:06:22.005+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T22:07:19.920+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T22:07:19.920+0200 [DEBUG] agent: Node info in sync
+2025-09-24T22:07:36.595+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-24T22:08:48.753+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-24T22:08:48.753+0200 [DEBUG] agent: Node info in sync
+2025-09-24T22:09:00.794+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:15:22.656+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:15:22.657+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:16:03.216+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:16:54.510+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:16:54.510+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:17:02.347+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:18:18.890+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:18:42.780+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:18:42.780+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:19:27.080+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:20:01.071+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:20:01.071+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:20:34.720+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:21:33.416+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:21:41.696+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:21:41.697+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:23:07.826+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:23:07.826+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:23:12.317+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:23:41.598+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:25:05.583+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:25:05.583+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:25:24.515+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:26:39.045+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:26:56.013+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:26:56.013+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:28:04.429+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:28:04.430+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:28:23.979+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:28:56.970+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:29:30.070+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:29:30.070+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:31:09.086+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:31:12.492+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:31:12.493+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:31:27.136+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:32:53.618+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:32:53.618+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:33:45.211+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:34:06.747+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:34:14.479+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:34:14.480+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:34:38.334+0200 [INFO]  agent: Caught: signal=hangup
+2025-09-25T12:34:38.374+0200 [DEBUG] agent: Cache options have not been modified
+2025-09-25T12:34:38.375+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:35:59.231+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:36:11.362+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:36:11.362+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:36:50.779+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:38:00.242+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:38:00.242+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:38:06.504+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:39:27.098+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:39:27.098+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:39:31.511+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:40:45.715+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:40:45.715+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:40:50.751+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:42:15.728+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:42:43.090+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:42:43.090+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:43:43.231+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:43:43.231+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:43:45.587+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:44:52.363+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:45:28.284+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:45:28.285+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:46:24.667+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:46:36.369+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:46:36.369+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:46:52.418+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:48:13.775+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:48:13.776+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:49:10.750+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:49:29.656+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:49:29.656+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:49:33.060+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:51:22.440+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:51:23.585+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:51:23.585+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:52:11.349+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:52:44.155+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:52:44.155+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:53:56.163+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:54:25.902+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:54:40.910+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:54:40.910+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:56:27.555+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:56:27.556+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:56:35.912+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:56:36.528+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:58:27.189+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:58:27.189+0200 [DEBUG] agent: Node info in sync
+2025-09-25T12:59:07.294+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:59:17.870+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T12:59:52.159+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T12:59:52.160+0200 [DEBUG] agent: Node info in sync
+2025-09-25T13:01:05.325+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T13:01:05.325+0200 [DEBUG] agent: Node info in sync
+2025-09-25T13:01:24.345+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T13:02:06.307+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T13:02:06.308+0200 [DEBUG] agent: Node info in sync
+2025-09-25T13:02:12.727+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T13:43:33.885+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T13:43:33.885+0200 [DEBUG] agent: Node info in sync
+2025-09-25T13:43:42.536+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T13:44:43.915+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T13:45:01.796+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T13:45:01.796+0200 [DEBUG] agent: Node info in sync
+2025-09-25T13:46:17.706+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T13:46:22.778+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T13:46:22.778+0200 [DEBUG] agent: Node info in sync
+2025-09-25T13:47:24.388+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T13:48:20.434+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T13:48:20.434+0200 [DEBUG] agent: Node info in sync
+2025-09-25T13:48:51.222+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T13:49:33.692+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T13:49:33.693+0200 [DEBUG] agent: Node info in sync
+2025-09-25T13:49:42.692+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T13:50:46.371+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T13:50:46.372+0200 [DEBUG] agent: Node info in sync
+2025-09-25T13:51:43.760+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T13:51:56.550+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T13:52:03.166+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T13:52:03.167+0200 [DEBUG] agent: Node info in sync
+2025-09-25T13:53:05.741+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T13:53:05.741+0200 [DEBUG] agent: Node info in sync
+2025-09-25T13:54:10.208+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T13:54:10.208+0200 [DEBUG] agent: Node info in sync
+2025-09-25T13:54:26.698+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T13:54:31.552+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T13:55:26.556+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T13:55:26.556+0200 [DEBUG] agent: Node info in sync
+2025-09-25T13:57:13.706+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T13:57:13.707+0200 [DEBUG] agent: Node info in sync
+2025-09-25T13:57:21.725+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T13:57:26.535+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T13:58:36.912+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T13:58:36.912+0200 [DEBUG] agent: Node info in sync
+2025-09-25T13:59:59.493+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:00:10.950+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:00:17.440+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:00:17.440+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:01:33.128+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:01:33.129+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:02:24.725+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:02:28.061+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:02:44.858+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:02:44.858+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:04:19.010+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:04:19.010+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:04:45.590+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:04:55.966+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:05:32.292+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:05:32.292+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:06:50.998+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:06:50.999+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:07:09.332+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:07:27.508+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:08:41.724+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:08:41.724+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:09:20.192+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:10:10.003+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:10:10.003+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:10:15.104+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:11:53.691+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:11:53.691+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:12:10.660+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:12:16.150+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:13:49.398+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:13:49.398+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:14:42.307+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:15:07.861+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:17:38.452+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:17:38.452+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:18:59.278+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:18:59.279+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:19:26.147+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:19:35.653+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:20:18.673+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:20:18.673+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:21:31.913+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:21:36.306+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:21:39.796+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:21:39.797+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:23:21.816+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:23:21.816+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:23:43.728+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:24:04.332+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:25:13.946+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:25:13.947+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:26:30.427+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:26:36.322+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:26:57.660+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:26:57.661+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:28:50.165+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:28:50.165+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:29:26.498+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:29:30.184+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:30:33.955+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:30:33.956+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:31:38.700+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:31:38.700+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:31:44.051+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:31:59.282+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:32:46.237+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:32:46.237+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:33:48.100+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:33:48.101+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:34:30.793+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:34:39.530+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:35:36.486+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:35:36.486+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:36:32.669+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:37:23.756+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:37:23.756+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:37:24.959+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:38:35.969+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:38:35.969+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:39:09.312+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:40:08.380+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:40:32.579+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:40:32.579+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:41:46.561+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:42:15.944+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:42:15.944+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:42:49.451+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:43:50.216+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:43:50.216+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:44:45.428+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:45:20.422+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:45:20.423+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:45:33.544+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:46:55.324+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:46:55.324+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:46:58.987+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:48:01.210+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:48:54.134+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:48:54.134+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:49:22.971+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:50:02.181+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:50:02.182+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:51:00.541+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:51:26.382+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:51:35.700+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:51:35.701+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:52:39.487+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:52:39.487+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:53:50.889+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:53:54.806+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:53:54.806+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:54:18.158+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:55:36.163+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:55:36.163+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:56:32.667+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:57:06.987+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:57:25.358+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:57:25.358+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:58:47.479+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T14:59:25.204+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T14:59:25.205+0200 [DEBUG] agent: Node info in sync
+2025-09-25T14:59:45.027+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:00:52.153+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:00:52.153+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:01:32.825+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:02:15.759+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:02:15.760+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:02:31.852+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:03:17.593+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:03:17.593+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:03:35.828+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:04:48.125+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:05:11.166+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:05:11.166+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:05:40.946+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:06:59.630+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:06:59.630+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:07:41.327+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:08:27.306+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:08:36.358+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:08:36.358+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:10:02.841+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:10:23.268+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:10:23.268+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:10:43.518+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:11:38.471+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:11:38.472+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:12:05.948+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:12:44.204+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:12:44.204+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:13:42.852+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:13:59.775+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:13:59.775+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:14:13.321+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:15:47.793+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:15:53.967+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:15:53.967+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:16:47.950+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:17:19.139+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:17:19.139+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:25:16.108+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:25:28.341+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:25:28.341+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:26:21.568+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:26:32.862+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:26:32.862+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:28:10.540+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:28:10.540+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:28:11.807+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:29:01.907+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:30:00.954+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:30:00.954+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:30:12.513+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:31:28.917+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:31:28.917+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:31:29.245+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:32:31.012+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:33:10.731+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:33:10.731+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:34:14.825+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:34:14.825+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:34:15.991+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:34:35.436+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:36:02.611+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:36:02.612+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:36:47.282+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:37:00.339+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:37:59.541+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:37:59.541+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:39:11.054+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:39:29.661+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:39:55.199+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:39:55.199+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:41:19.185+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:41:19.186+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:41:43.131+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:42:03.517+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:42:48.335+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:42:48.335+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:43:50.268+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:44:32.219+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:44:41.898+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:44:41.899+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:45:43.525+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:45:43.525+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:46:00.481+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:47:17.623+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:47:38.901+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:47:38.902+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:48:37.884+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:49:37.707+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:49:37.707+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:50:08.894+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:51:21.004+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:51:31.004+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:51:31.004+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:52:31.752+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:52:36.129+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:52:36.129+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:54:00.498+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:54:00.498+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:54:16.797+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:55:17.594+0200 [DEBUG] agent.router.manager: Rebalanced servers, new active server: number_of_servers=1 active_server="machine.dc1 (Addr: tcp/127.0.0.1:8300) (DC: dc1)"
+2025-09-25T15:55:21.156+0200 [DEBUG] agent: Skipping remote check since it is managed automatically: check=serfHealth
+2025-09-25T15:55:21.157+0200 [DEBUG] agent: Node info in sync
+2025-09-25T15:56:22.793+0200 [INFO]  agent: Caught: signal=terminated
+2025-09-25T15:56:22.793+0200 [INFO]  agent: Graceful shutdown disabled. Exiting
+2025-09-25T15:56:22.793+0200 [INFO]  agent: Requesting shutdown
+2025-09-25T15:56:22.796+0200 [INFO]  agent.server: shutting down server
+2025-09-25T15:56:22.797+0200 [INFO]  agent.leader: stopping routine: routine="metrics for streaming peering resources"
+2025-09-25T15:56:22.797+0200 [INFO]  agent.leader: stopping routine: routine="intermediate cert renew watch"
+2025-09-25T15:56:22.797+0200 [INFO]  agent.leader: stopping routine: routine="CA signing expiration metric"
+2025-09-25T15:56:22.797+0200 [INFO]  agent.leader: stopping routine: routine="federation state anti-entropy"
+2025-09-25T15:56:22.797+0200 [INFO]  agent.leader: stopping routine: routine="streaming peering resources"
+2025-09-25T15:56:22.797+0200 [INFO]  agent.leader: stopping routine: routine="peering deferred deletion"
+2025-09-25T15:56:22.797+0200 [INFO]  agent.leader: stopping routine: routine="CA root pruning"
+2025-09-25T15:56:22.797+0200 [INFO]  agent.leader: stopping routine: routine="CA root expiration metric"
+2025-09-25T15:56:22.797+0200 [INFO]  agent.leader: stopping routine: routine="config entry controllers"
+2025-09-25T15:56:22.797+0200 [INFO]  agent.leader: stopping routine: routine="federation state pruning"
+2025-09-25T15:56:22.797+0200 [WARN]  agent.server.serf.lan: serf: Shutdown without a Leave
+2025-09-25T15:56:22.797+0200 [DEBUG] agent.server.usage_metrics: usage metrics reporter shutting down
+2025-09-25T15:56:22.797+0200 [INFO]  agent.leader: stopping routine: routine="peering deferred deletion"
+2025-09-25T15:56:22.797+0200 [INFO]  agent.leader: stopping routine: routine="federation state anti-entropy"
+2025-09-25T15:56:22.798+0200 [INFO]  agent.leader: stopping routine: routine="federation state pruning"
+2025-09-25T15:56:22.798+0200 [INFO]  agent.leader: stopped routine: routine="streaming peering resources"
+2025-09-25T15:56:22.798+0200 [INFO]  agent.leader: stopped routine: routine="CA signing expiration metric"
+2025-09-25T15:56:22.798+0200 [INFO]  agent.leader: stopping routine: routine="streaming peering resources"
+2025-09-25T15:56:22.798+0200 [INFO]  agent.leader: stopping routine: routine="metrics for streaming peering resources"
+2025-09-25T15:56:22.798+0200 [INFO]  agent.leader: stopping routine: routine="intermediate cert renew watch"
+2025-09-25T15:56:22.798+0200 [INFO]  agent.leader: stopping routine: routine="CA root pruning"
+2025-09-25T15:56:22.798+0200 [INFO]  agent.leader: stopping routine: routine="CA root expiration metric"
+2025-09-25T15:56:22.798+0200 [INFO]  agent.leader: stopping routine: routine="config entry controllers"
+2025-09-25T15:56:22.798+0200 [INFO]  agent.server.autopilot: reconciliation now disabled
+2025-09-25T15:56:22.798+0200 [WARN]  agent.controller-runtime: error received from watch: managed_type=demo.v2.Artist error="rpc error: code = Canceled desc = context canceled"
+2025-09-25T15:56:22.798+0200 [ERROR] agent.server: error performing anti-entropy sync of federation state: error="context canceled"
+2025-09-25T15:56:22.798+0200 [INFO]  agent.leader: stopped routine: routine="federation state anti-entropy"
+2025-09-25T15:56:22.798+0200 [WARN]  agent.controller-runtime: error received from watch: managed_type=internal.v1.Tombstone error="rpc error: code = Canceled desc = context canceled"
+2025-09-25T15:56:22.798+0200 [WARN]  agent.controller-runtime: error received from watch: managed_type=demo.v2.Artist error="rpc error: code = Canceled desc = context canceled"
+2025-09-25T15:56:22.798+0200 [DEBUG] agent.controller-runtime: controller stopping: managed_type=demo.v2.Artist
+2025-09-25T15:56:22.797+0200 [WARN]  agent.server.serf.wan: serf: Shutdown without a Leave
+2025-09-25T15:56:22.798+0200 [INFO]  agent.leader: stopped routine: routine="intermediate cert renew watch"
+2025-09-25T15:56:22.799+0200 [INFO]  agent.leader: stopped routine: routine="config entry controllers"
+2025-09-25T15:56:22.799+0200 [INFO]  agent.leader: stopped routine: routine="CA root pruning"
+2025-09-25T15:56:22.799+0200 [INFO]  agent.leader: stopped routine: routine="CA root expiration metric"
+2025-09-25T15:56:22.799+0200 [DEBUG] agent.server.autopilot: state update routine is now stopped
+2025-09-25T15:56:22.800+0200 [DEBUG] agent.server.autopilot: autopilot is now stopped
+2025-09-25T15:56:22.799+0200 [INFO]  agent.leader: stopped routine: routine="federation state pruning"
+2025-09-25T15:56:22.797+0200 [INFO]  agent.server.peering_metrics: stopping peering metrics
+2025-09-25T15:56:22.801+0200 [INFO]  agent.leader: stopped routine: routine="metrics for streaming peering resources"
+2025-09-25T15:56:22.799+0200 [INFO]  agent.leader: stopped routine: routine="peering deferred deletion"
+2025-09-25T15:56:22.799+0200 [INFO]  agent.router.manager: shutting down
+2025-09-25T15:56:22.799+0200 [INFO]  agent.router.manager: shutting down
+2025-09-25T15:56:22.798+0200 [DEBUG] agent.controller-runtime: controller stopping: managed_type=internal.v1.Tombstone
+2025-09-25T15:56:22.801+0200 [INFO]  agent: consul server down
+2025-09-25T15:56:22.801+0200 [INFO]  agent: shutdown complete
+2025-09-25T15:56:22.801+0200 [INFO]  agent: Stopping server: protocol=DNS address=127.0.0.1:8600 network=tcp
+2025-09-25T15:56:22.801+0200 [INFO]  agent: Stopping server: protocol=DNS address=127.0.0.1:8600 network=udp
+2025-09-25T15:56:22.801+0200 [INFO]  agent: Stopping server: address=127.0.0.1:8500 network=tcp protocol=http
+2025-09-25T15:56:22.802+0200 [INFO]  agent: Waiting for endpoints to shut down
+2025-09-25T15:56:22.802+0200 [INFO]  agent: Endpoints down
+2025-09-25T15:56:22.802+0200 [INFO]  agent: Exit code: code=1
