@@ -1,14 +1,14 @@
 # argus-provider-consul: Argus remote provider for HashiCorp Consul
 ### an AGILira library
 
-Official Argus provider for remote configuration management through [HashiCorp Consul](https://github.com/hashicorp/consul).
+Official [Argus](https://github.com/agilira/argus) provider for remote configuration management through [HashiCorp Consul](https://github.com/hashicorp/consul).
 It enables real-time configuration loading and watching from Consul KV store with native blocking queries, multi-datacenter support, and production-ready security features.
 
 [![CI](https://github.com/agilira/argus-provider-consul/actions/workflows/ci.yml/badge.svg)](https://github.com/agilira/argus-provider-consul/actions/workflows/ci.yml)
 [![Security](https://img.shields.io/badge/Security-gosec-brightgreen)](https://github.com/agilira/argus-provider-consul/actions/workflows/ci.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/agilira/argus-provider-consul?v=2)](https://goreportcard.com/report/github.com/agilira/argus-provider-consul)
 [![Coverage](https://codecov.io/gh/agilira/argus-provider-consul/branch/main/graph/badge.svg)](https://codecov.io/gh/agilira/argus-provider-consul)
-[![pkg.go.dev](https://pkg.go.dev/badge/github.com/agilira/argus-provider-consul.svg)](https://pkg.go.dev/github.com/agilira/argus-provider-consul)
+[![Made For Argus](https://img.shields.io/badge/Made_for-Argus-87CEEB)](https://github.com/agilira/argus)
 
 **[Features](#features) • [Installation](#installation) • [Quick Start](#quick-start) • [Configuration](#configuration) • [Demo](#demo) • [Requirements](#requirements)**
 
