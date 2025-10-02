@@ -17,18 +17,18 @@ import (
 	"time"
 )
 
-// TestExamples_Integration verifica che l'esempio di integrazione funzioni correttamente
+// TestExamples_Integration verifies that the integration example runs successfully
 func TestExamples_Integration(t *testing.T) {
-	// Trova il percorso dell'esempio
+	// Find the example path
 	examplePath := filepath.Join("examples", "integration-demo")
 
-	// Verifica che il file esista
+	// Check that the file exists
 	mainFile := filepath.Join(examplePath, "main.go")
 	if _, err := os.Stat(mainFile); os.IsNotExist(err) {
 		t.Skipf("Integration example not found at %s", mainFile)
 	}
 
-	// Esegui l'esempio
+	// run the example with a timeout
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
 
@@ -42,7 +42,7 @@ func TestExamples_Integration(t *testing.T) {
 
 	outputStr := string(output)
 
-	// Verifica che l'output contenga i messaggi di successo attesi
+	// Check that the output contains the expected success messages
 	expectedMessages := []string{
 		"Consul provider registered",
 		"Provider Discovery",
@@ -59,7 +59,7 @@ func TestExamples_Integration(t *testing.T) {
 		}
 	}
 
-	// Verifica che non ci siano errori
+	// Check that there are no errors
 	if strings.Contains(outputStr, "FAIL") || strings.Contains(outputStr, "Error") {
 		t.Errorf("Integration example output contains errors: %s", outputStr)
 	}
@@ -67,29 +67,29 @@ func TestExamples_Integration(t *testing.T) {
 	t.Logf("✓ Integration example completed successfully")
 }
 
-// TestExamples_LiveWatch verifica l'esempio di live watch con Consul reale (se disponibile)
+// TestExamples_LiveWatch verifies the live watch example with real Consul (if available)
 func TestExamples_LiveWatch(t *testing.T) {
-	// Controlla se CONSUL_ADDR è impostato per i test con Consul reale
+	// Check if CONSUL_ADDR is set for tests with real Consul
 	consulAddr := os.Getenv("CONSUL_ADDR")
 	if consulAddr == "" {
 		t.Skip("Skipping live watch test - set CONSUL_ADDR to enable")
 	}
 
-	// Verifica che Consul sia accessibile
+	// Check that Consul is accessible
 	if !isConsulAvailable(consulAddr) {
 		t.Skipf("Consul not available at %s", consulAddr)
 	}
 
-	// Trova il percorso dell'esempio
+	// Find the example path
 	examplePath := filepath.Join("examples", "live-watch-test")
 
-	// Verifica che il file esista
+	// Check that the file exists
 	mainFile := filepath.Join(examplePath, "main.go")
 	if _, err := os.Stat(mainFile); os.IsNotExist(err) {
 		t.Skipf("Live watch example not found at %s", mainFile)
 	}
 
-	// Esegui l'esempio con timeout
+	// Run the example with a timeout
 	ctx, cancel := context.WithTimeout(context.Background(), 40*time.Second)
 	defer cancel()
 
@@ -100,12 +100,12 @@ func TestExamples_LiveWatch(t *testing.T) {
 	output, err := cmd.CombinedOutput()
 	outputStr := string(output)
 
-	// L'esempio dovrebbe completarsi entro il timeout
+	// The example should complete within the timeout
 	if err != nil && !strings.Contains(err.Error(), "signal: killed") {
 		t.Fatalf("Live watch example failed: %v\nOutput: %s", err, outputStr)
 	}
 
-	// Verifica che l'output contenga i messaggi di successo attesi
+	// Check that the output contains the expected success messages
 	expectedMessages := []string{
 		"Live Consul Watch Test",
 		"Set initial configuration in Consul",
@@ -121,7 +121,7 @@ func TestExamples_LiveWatch(t *testing.T) {
 		}
 	}
 
-	// Verifica che siano state rilevate multiple modifiche
+	// Check that multiple changes were detected
 	changeCount := strings.Count(outputStr, "CHANGE #")
 	if changeCount < 2 {
 		t.Errorf("Expected at least 2 configuration changes, got %d", changeCount)
@@ -130,7 +130,7 @@ func TestExamples_LiveWatch(t *testing.T) {
 	t.Logf("✓ Live watch example completed successfully with %d configuration changes", changeCount)
 }
 
-// TestExamples_Compilation verifica che tutti gli esempi si compilino correttamente
+// TestExamples_Compilation verifies that all examples compile correctly
 func TestExamples_Compilation(t *testing.T) {
 	examples := []string{
 		"examples/integration-demo",
@@ -139,12 +139,12 @@ func TestExamples_Compilation(t *testing.T) {
 
 	for _, examplePath := range examples {
 		t.Run(filepath.Base(examplePath), func(t *testing.T) {
-			// Verifica che la directory esista
+			// verify that the example directory exists
 			if _, err := os.Stat(examplePath); os.IsNotExist(err) {
 				t.Skipf("Example directory not found: %s", examplePath)
 			}
 
-			// Compila l'esempio
+			// Compile the example
 			ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 			defer cancel()
 
@@ -158,7 +158,7 @@ func TestExamples_Compilation(t *testing.T) {
 
 			t.Logf("✓ Example %s compiles successfully", examplePath)
 
-			// Pulisci il binario creato
+			// Cleanup the built binary
 			binaryName := filepath.Base(examplePath)
 			if strings.Contains(string(output), binaryName) {
 				_ = os.Remove(filepath.Join(examplePath, binaryName))
@@ -167,18 +167,18 @@ func TestExamples_Compilation(t *testing.T) {
 	}
 }
 
-// isConsulAvailable verifica se Consul è disponibile all'indirizzo specificato
+// isConsulAvailable verifies that Consul is available at the specified address
 func isConsulAvailable(addr string) bool {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
-	// Usa curl per verificare se Consul risponde
+	// Use curl to check if Consul is responding
 	cmd := exec.CommandContext(ctx, "curl", "-s", fmt.Sprintf("http://%s/v1/status/leader", addr))
 	err := cmd.Run()
 	return err == nil
 }
 
-// TestExamples_Documentation verifica che la documentazione degli esempi sia presente
+// TestExamples_Documentation verifys that examples contain adequate documentation
 func TestExamples_Documentation(t *testing.T) {
 	examples := map[string][]string{
 		"examples/integration-demo/main.go": {
@@ -208,7 +208,7 @@ func TestExamples_Documentation(t *testing.T) {
 				}
 			}
 
-			// Verifica che ci siano commenti appropriati
+			// Check that there are appropriate comments
 			commentLines := 0
 			lines := strings.Split(fileContent, "\n")
 			for _, line := range lines {
