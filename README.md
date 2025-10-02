@@ -7,8 +7,7 @@ It enables real-time configuration loading and watching from Consul KV store wit
 [![CI](https://github.com/agilira/argus-provider-consul/actions/workflows/ci.yml/badge.svg)](https://github.com/agilira/argus-provider-consul/actions/workflows/ci.yml)
 [![Security](https://img.shields.io/badge/Security-gosec-brightgreen)](https://github.com/agilira/argus-provider-consul/actions/workflows/ci.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/agilira/argus-provider-consul?v=2)](https://goreportcard.com/report/github.com/agilira/argus-provider-consul)
-[![Coverage](https://codecov.io/gh/agilira/argus-provider-consul/branch/main/graph/badge.svg)](https://codecov.io/gh/agilira/argus-provider-consul)
-[![Made For Argus](https://img.shields.io/badge/Made_for-Argus-87CEEB)](https://github.com/agilira/argus)
+[![Made For Argus](https://img.shields.io/badge/Made_for-Argus-AFEEEE)](https://github.com/agilira/argus)
 
 **[Features](#features) • [Installation](#installation) • [Quick Start](#quick-start) • [Configuration](#configuration) • [Demo](#demo) • [Requirements](#requirements)**
 
