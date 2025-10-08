@@ -111,7 +111,7 @@ func decodeKeyPathSafely(keyPath string) string {
 
 // Pre-compiled dangerous patterns for faster validation (micro optimization)
 var dangerousPatterns = []string{
-	"../", "..\\", "./../", ".\\..\\",
+	"..", "../", "..\\", "./../", ".\\..\\",
 	"/etc/", "\\etc\\", "/proc/", "\\proc\\",
 	"/windows/", "\\windows\\", "/system32/", "\\system32\\",
 	"/.ssh/", "\\.ssh\\", "/passwd", "\\passwd",
@@ -142,21 +142,22 @@ var windowsDeviceNames = []string{
 
 // checkWindowsDeviceNames validates against Windows device name attacks.
 func checkWindowsDeviceNames(keyPath string) error {
-	// Optimize: replace only once and reuse the result
-	normalizedPath := strings.ReplaceAll(keyPath, "\\", "/")
-	pathSegments := strings.Split(normalizedPath, "/")
+	// Split path into components using multiple separators
+	pathComponents := strings.FieldsFunc(keyPath, func(c rune) bool {
+		return c == '/' || c == '\\' || c == ':'
+	})
 
-	for _, segment := range pathSegments {
-		// Remove file extension for comparison
-		segmentBase := strings.ToLower(segment)
-		if dotIndex := strings.LastIndex(segmentBase, "."); dotIndex > 0 {
-			segmentBase = segmentBase[:dotIndex]
+	for _, component := range pathComponents {
+		// Remove file extension for comparison and trim whitespace
+		componentBase := strings.ToLower(strings.TrimSpace(component))
+		if dotIndex := strings.LastIndex(componentBase, "."); dotIndex > 0 {
+			componentBase = componentBase[:dotIndex]
 		}
 
 		for _, deviceName := range windowsDeviceNames {
-			if segmentBase == deviceName {
+			if componentBase == deviceName {
 				return errors.New("ARGUS_INVALID_CONFIG",
-					fmt.Sprintf("windows device name '%s' not allowed in consul key path", segment))
+					fmt.Sprintf("windows device name '%s' not allowed in consul key path", component))
 			}
 		}
 	}

@@ -32,30 +32,37 @@ function Test-ToolExists {
 
 function Invoke-Help {
     Write-ColorOutput "Available commands:" $Blue
-    Write-ColorOutput "  help          Show this help message" $Green
-    Write-ColorOutput "  test          Run tests" $Green
-    Write-ColorOutput "  race          Run tests with race detector" $Green
-    Write-ColorOutput "  coverage      Run tests with coverage" $Green
-    Write-ColorOutput "  fmt           Format Go code" $Green
-    Write-ColorOutput "  vet           Run go vet" $Green
-    Write-ColorOutput "  staticcheck   Run staticcheck" $Green
-    Write-ColorOutput "  errcheck      Run errcheck" $Green
-    Write-ColorOutput "  gosec         Run gosec security scanner" $Green
-    Write-ColorOutput "  lint          Run all linters" $Green
-    Write-ColorOutput "  security      Run security checks" $Green
-    Write-ColorOutput "  check         Run all checks (format, vet, lint, security, test)" $Green
-    Write-ColorOutput "  check-race    Run all checks including race detector" $Green
-    Write-ColorOutput "  tools         Install development tools" $Green
-    Write-ColorOutput "  deps          Download and verify dependencies" $Green
-    Write-ColorOutput "  clean         Clean build artifacts and test cache" $Green
-    Write-ColorOutput "  build         Build the binary" $Green
-    Write-ColorOutput "  install       Install the binary to GOPATH/bin" $Green
-    Write-ColorOutput "  bench         Run benchmarks" $Green
-    Write-ColorOutput "  ci            Run CI checks" $Green
-    Write-ColorOutput "  dev           Quick development check" $Green
-    Write-ColorOutput "  pre-commit    Run pre-commit checks (alias for 'check')" $Green
-    Write-ColorOutput "  all           Run everything from scratch" $Green
-    Write-ColorOutput "  status        Show status of installed tools" $Green
+    Write-ColorOutput "  help             Show this help message" $Green
+    Write-ColorOutput "  test             Run tests" $Green
+    Write-ColorOutput "  race             Run tests with race detector" $Green
+    Write-ColorOutput "  coverage         Run tests with coverage" $Green
+    Write-ColorOutput "  fmt              Format Go code" $Green
+    Write-ColorOutput "  vet              Run go vet" $Green
+    Write-ColorOutput "  staticcheck      Run staticcheck" $Green
+    Write-ColorOutput "  errcheck         Run errcheck" $Green
+    Write-ColorOutput "  gosec            Run gosec security scanner" $Green
+    Write-ColorOutput "  govulncheck      Run govulncheck vulnerability scanner" $Green
+    Write-ColorOutput "  lint             Run all linters" $Green
+    Write-ColorOutput "  security         Run security checks" $Green
+    Write-ColorOutput "  check            Run all checks (format, vet, lint, security, test)" $Green
+    Write-ColorOutput "  check-race       Run all checks including race detector" $Green
+    Write-ColorOutput "  tools            Install development tools" $Green
+    Write-ColorOutput "  deps             Download and verify dependencies" $Green
+    Write-ColorOutput "  clean            Clean build artifacts and test cache" $Green
+    Write-ColorOutput "  build            Build the binary" $Green
+    Write-ColorOutput "  install          Install the binary to GOPATH/bin" $Green
+    Write-ColorOutput "  bench            Run benchmarks" $Green
+    Write-ColorOutput "  fuzz             Run fuzz tests (30s each)" $Green
+    Write-ColorOutput "  fuzz-extended    Run extended fuzz tests (5m each)" $Green
+    Write-ColorOutput "  fuzz-continuous  Run continuous fuzz tests (until Ctrl+C)" $Green
+    Write-ColorOutput "  fuzz-report      Generate fuzz testing report" $Green
+    Write-ColorOutput "  security-full    Run complete security testing (static + fuzz)" $Green
+    Write-ColorOutput "  ci               Run CI checks" $Green
+    Write-ColorOutput "  ci-security      Run CI checks with fuzz testing" $Green
+    Write-ColorOutput "  dev              Quick development check" $Green
+    Write-ColorOutput "  pre-commit       Run pre-commit checks (alias for 'check')" $Green
+    Write-ColorOutput "  all              Run everything from scratch" $Green
+    Write-ColorOutput "  status           Show status of installed tools" $Green
 }
 
 function Invoke-Test {
@@ -124,6 +131,16 @@ function Invoke-GoSec {
     }
 }
 
+function Invoke-GoVulnCheck {
+    Write-ColorOutput "Running govulncheck vulnerability scanner..." $Yellow
+    if (-not (Test-ToolExists "govulncheck")) {
+        Write-ColorOutput "govulncheck not found. Run '.\Makefile.ps1 tools' to install." $Red
+        exit 1
+    }
+    & "$ToolsDir\govulncheck.exe" "./..."
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+}
+
 function Invoke-Lint {
     Invoke-StaticCheck
     Invoke-ErrCheck
@@ -132,6 +149,7 @@ function Invoke-Lint {
 
 function Invoke-Security {
     Invoke-GoSec
+    Invoke-GoVulnCheck
     Write-ColorOutput "Security checks completed." $Green
 }
 
@@ -162,6 +180,9 @@ function Invoke-Tools {
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
     
     go install github.com/securego/gosec/v2/cmd/gosec@latest
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    
+    go install golang.org/x/vuln/cmd/govulncheck@latest
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
     
     Write-ColorOutput "Tools installed successfully!" $Green
@@ -206,6 +227,166 @@ function Invoke-Bench {
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 
+function Invoke-Fuzz {
+    Write-ColorOutput "Running fuzz tests..." $Yellow
+    Write-ColorOutput "Starting comprehensive fuzz testing suite..." $Blue
+    Write-ColorOutput "Testing Consul URL parsing..." $Blue
+    go test -fuzz=FuzzParseConsulURL -fuzztime=30s .
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    
+    Write-ColorOutput "Testing key path validation..." $Blue
+    go test -fuzz=FuzzValidateSecureKeyPath -fuzztime=30s .
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    
+    Write-ColorOutput "Testing JSON parsing..." $Blue
+    go test -fuzz=FuzzConsulJSONParsing -fuzztime=30s .
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    
+    Write-ColorOutput "Testing integrated Load function..." $Blue
+    go test -fuzz=FuzzConsulLoad -fuzztime=30s .
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    
+    Write-ColorOutput "All fuzz tests completed successfully!" $Green
+}
+
+function Invoke-FuzzExtended {
+    Write-ColorOutput "Running extended fuzz tests (5 minutes each)..." $Yellow
+    Write-ColorOutput "Extended fuzz testing - this will take approximately 20 minutes..." $Blue
+    
+    Write-ColorOutput "Testing Consul URL parsing (5m)..." $Blue
+    go test -fuzz=FuzzParseConsulURL -fuzztime=5m .
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    
+    Write-ColorOutput "Testing key path validation (5m)..." $Blue
+    go test -fuzz=FuzzValidateSecureKeyPath -fuzztime=5m .
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    
+    Write-ColorOutput "Testing JSON parsing (5m)..." $Blue
+    go test -fuzz=FuzzConsulJSONParsing -fuzztime=5m .
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    
+    Write-ColorOutput "Testing integrated Load function (5m)..." $Blue
+    go test -fuzz=FuzzConsulLoad -fuzztime=5m .
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    
+    Write-ColorOutput "Extended fuzz tests completed successfully!" $Green
+}
+
+function Invoke-FuzzContinuous {
+    Write-ColorOutput "Running continuous fuzz tests (press Ctrl+C to stop)..." $Yellow
+    Write-ColorOutput "Continuous fuzz testing - press Ctrl+C when satisfied..." $Blue
+    
+    try {
+        while ($true) {
+            Write-ColorOutput "Round: URL parsing..." $Blue
+            $timeoutJob = Start-Job -ScriptBlock { 
+                Start-Sleep 120  # 2 minute timeout
+                return "timeout"
+            }
+            $fuzzJob = Start-Job -ScriptBlock {
+                Set-Location $using:PWD
+                go test -fuzz=FuzzParseConsulURL -fuzztime=1m "./..."
+            }
+            
+            $completed = Wait-Job -Job @($timeoutJob, $fuzzJob) -Any
+            if ($completed.Name -eq $timeoutJob.Name) {
+                Stop-Job $fuzzJob
+                Remove-Job $fuzzJob
+            }
+            Remove-Job $timeoutJob
+            
+            Write-ColorOutput "Round: Key validation..." $Blue
+            $timeoutJob = Start-Job -ScriptBlock { 
+                Start-Sleep 120
+                return "timeout"
+            }
+            $fuzzJob = Start-Job -ScriptBlock {
+                Set-Location $using:PWD
+                go test -fuzz=FuzzValidateSecureKeyPath -fuzztime=1m "./..."
+            }
+            
+            $completed = Wait-Job -Job @($timeoutJob, $fuzzJob) -Any
+            if ($completed.Name -eq $timeoutJob.Name) {
+                Stop-Job $fuzzJob
+                Remove-Job $fuzzJob
+            }
+            Remove-Job $timeoutJob
+            
+            Write-ColorOutput "Round: JSON parsing..." $Blue
+            $timeoutJob = Start-Job -ScriptBlock { 
+                Start-Sleep 120
+                return "timeout"
+            }
+            $fuzzJob = Start-Job -ScriptBlock {
+                Set-Location $using:PWD
+                go test -fuzz=FuzzConsulJSONParsing -fuzztime=1m "./..."
+            }
+            
+            $completed = Wait-Job -Job @($timeoutJob, $fuzzJob) -Any
+            if ($completed.Name -eq $timeoutJob.Name) {
+                Stop-Job $fuzzJob
+                Remove-Job $fuzzJob
+            }
+            Remove-Job $timeoutJob
+            
+            Write-ColorOutput "Round: Load function..." $Blue
+            $timeoutJob = Start-Job -ScriptBlock { 
+                Start-Sleep 120
+                return "timeout"
+            }
+            $fuzzJob = Start-Job -ScriptBlock {
+                Set-Location $using:PWD
+                go test -fuzz=FuzzConsulLoad -fuzztime=1m "./..."
+            }
+            
+            $completed = Wait-Job -Job @($timeoutJob, $fuzzJob) -Any
+            if ($completed.Name -eq $timeoutJob.Name) {
+                Stop-Job $fuzzJob
+                Remove-Job $fuzzJob
+            }
+            Remove-Job $timeoutJob
+            
+            Write-ColorOutput "Completed fuzz round, starting next..." $Green
+        }
+    }
+    catch {
+        Write-ColorOutput "Continuous fuzzing stopped by user" $Green
+    }
+}
+
+function Invoke-FuzzReport {
+    Write-ColorOutput "Generating fuzz test report..." $Yellow
+    
+    $reportContent = @"
+Fuzz Test Coverage Report for Consul Provider
+=========================================
+
+Test Functions:
+- FuzzParseConsulURL: Tests Consul URL parsing security
+- FuzzValidateSecureKeyPath: Tests path traversal prevention
+- FuzzConsulJSONParsing: Tests JSON parser resilience
+- FuzzConsulLoad: Tests end-to-end Load function
+
+Security Coverage:
+- URL injection and SSRF prevention
+- Path traversal attack detection
+- Authentication bypass prevention
+- JSON parser DoS protection
+- Resource exhaustion prevention
+
+Generated: $(Get-Date)
+"@
+    
+    $reportContent | Out-File -FilePath "fuzz_report.txt" -Encoding UTF8
+    Write-ColorOutput "Fuzz report generated: fuzz_report.txt" $Green
+}
+
+function Invoke-SecurityFull {
+    Invoke-Security
+    Invoke-Fuzz
+    Write-ColorOutput "Complete security testing finished!" $Green
+}
+
 function Invoke-CI {
     Write-ColorOutput "Running CI checks..." $Blue
     Invoke-Fmt
@@ -215,6 +396,18 @@ function Invoke-CI {
     Invoke-Test
     Invoke-Coverage
     Write-ColorOutput "CI checks completed successfully!" $Green
+}
+
+function Invoke-CISecurity {
+    Write-ColorOutput "Running security-focused CI checks..." $Blue
+    Invoke-Fmt
+    Invoke-Vet
+    Invoke-Lint
+    Invoke-Security
+    Invoke-Test
+    Invoke-Coverage
+    Invoke-Fuzz
+    Write-ColorOutput "Security CI checks completed successfully!" $Green
 }
 
 function Invoke-Dev {
@@ -238,18 +431,23 @@ function Invoke-Status {
     
     $staticcheckStatus = if (Test-ToolExists "staticcheck") { "✓ installed" } else { "✗ missing" }
     $staticcheckColor = if (Test-ToolExists "staticcheck") { $Green } else { $Red }
-    Write-Host "staticcheck: " -NoNewline
+    Write-Host "staticcheck:   " -NoNewline
     Write-ColorOutput $staticcheckStatus $staticcheckColor
     
     $errcheckStatus = if (Test-ToolExists "errcheck") { "✓ installed" } else { "✗ missing" }
     $errcheckColor = if (Test-ToolExists "errcheck") { $Green } else { $Red }
-    Write-Host "errcheck:    " -NoNewline
+    Write-Host "errcheck:      " -NoNewline
     Write-ColorOutput $errcheckStatus $errcheckColor
     
     $gosecStatus = if (Test-ToolExists "gosec") { "✓ installed" } else { "✗ missing" }
     $gosecColor = if (Test-ToolExists "gosec") { $Green } else { $Red }
-    Write-Host "gosec:       " -NoNewline
+    Write-Host "gosec:         " -NoNewline
     Write-ColorOutput $gosecStatus $gosecColor
+    
+    $govulncheckStatus = if (Test-ToolExists "govulncheck") { "✓ installed" } else { "✗ missing" }
+    $govulncheckColor = if (Test-ToolExists "govulncheck") { $Green } else { $Red }
+    Write-Host "govulncheck:   " -NoNewline
+    Write-ColorOutput $govulncheckStatus $govulncheckColor
 }
 
 # Main execution
@@ -263,6 +461,7 @@ switch ($Command.ToLower()) {
     "staticcheck" { Invoke-StaticCheck }
     "errcheck" { Invoke-ErrCheck }
     "gosec" { Invoke-GoSec }
+    "govulncheck" { Invoke-GoVulnCheck }
     "lint" { Invoke-Lint }
     "security" { Invoke-Security }
     "check" { Invoke-Check }
@@ -273,7 +472,13 @@ switch ($Command.ToLower()) {
     "build" { Invoke-Build }
     "install" { Invoke-Install }
     "bench" { Invoke-Bench }
+    "fuzz" { Invoke-Fuzz }
+    "fuzz-extended" { Invoke-FuzzExtended }
+    "fuzz-continuous" { Invoke-FuzzContinuous }
+    "fuzz-report" { Invoke-FuzzReport }
+    "security-full" { Invoke-SecurityFull }
     "ci" { Invoke-CI }
+    "ci-security" { Invoke-CISecurity }
     "dev" { Invoke-Dev }
     "pre-commit" { Invoke-Check }
     "all" { Invoke-All }

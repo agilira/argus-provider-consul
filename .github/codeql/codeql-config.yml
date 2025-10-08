@@ -1,0 +1,66 @@
+# CodeQL Configuration for Argus Consul Provider
+# Focuses on Consul-specific security, SSRF, and remote configuration vulnerabilities
+
+name: argus-consul-provider-security
+
+# Disable default queries to use our custom security focus
+disable-default-queries: false
+
+# Include additional security queries relevant to Consul and remote configuration
+queries:
+  - uses: security-and-quality
+  - uses: security-experimental
+  
+# Define custom paths for analysis
+paths:
+  - "**/*.go"
+
+# Ignore test files and dependencies (focus on production code)
+paths-ignore:
+  - "**/*_test.go"
+  - "**/testdata/**"
+  - "**/vendor/**"
+  - "**/examples/**"
+
+# Packs for enhanced Consul security analysis
+packs:
+  - "codeql/go-queries"
+  - "codeql/go-queries:AlertSuppression.ql"
+  - "codeql/go-queries:Security"
+
+# Query filters for Consul provider security
+query-filters:
+  - include:
+      id: go/path-injection
+      # Critical for Consul key path validation
+  - include:
+      id: go/ssrf
+      # Essential for Consul URL validation and SSRF prevention
+  - include:
+      id: go/uncontrolled-data-used-in-path
+      # Consul key paths from user input
+  - include:
+      id: go/url-redirection
+      # Consul URL manipulation detection
+  - include:
+      id: go/missing-auth
+      # Consul authentication bypass
+  - include:
+      id: go/hardcoded-credentials
+      # Consul token/credential leakage
+  - exclude:
+      id: go/unused-variable
+      # Configuration structs may have unused fields for compatibility
+      
+# Custom extraction configuration for Consul provider analysis
+extractor-config:
+  go:
+    # Enable deep analysis for Consul-specific functions
+    index:
+      filters:
+        - include: "**/*.go"
+        - exclude: "*_test.go"
+    build_command: "go build ./..."
+    
+# Performance tuning for Consul provider analysis
+compilation-cache: true

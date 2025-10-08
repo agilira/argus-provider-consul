@@ -66,10 +66,18 @@ gosec: ## Run gosec security scanner
 	fi
 	@$(TOOLS_DIR)/gosec ./... || (echo "$(YELLOW)  gosec completed with warnings (may be import-related)$(NC)" && exit 0)
 
+govulncheck: ## Run govulncheck vulnerability scanner
+	@echo "$(YELLOW)Running govulncheck vulnerability scanner...$(NC)"
+	@if [ ! -f "$(TOOLS_DIR)/govulncheck" ]; then \
+		echo "$(RED)govulncheck not found. Run 'make tools' to install.$(NC)"; \
+		exit 1; \
+	fi
+	$(TOOLS_DIR)/govulncheck ./...
+
 lint: staticcheck errcheck ## Run all linters
 	@echo "$(GREEN)All linters completed.$(NC)"
 
-security: gosec ## Run security checks
+security: gosec govulncheck ## Run security checks
 	@echo "$(GREEN)Security checks completed.$(NC)"
 
 check: fmt vet lint security test ## Run all checks (format, vet, lint, security, test)
@@ -83,6 +91,7 @@ tools: ## Install development tools
 	go install honnef.co/go/tools/cmd/staticcheck@latest
 	go install github.com/kisielk/errcheck@latest
 	go install github.com/securego/gosec/v2/cmd/gosec@latest
+	go install golang.org/x/vuln/cmd/govulncheck@latest
 	@echo "$(GREEN)Tools installed successfully!$(NC)"
 
 deps: ## Download and verify dependencies
@@ -110,10 +119,81 @@ bench: ## Run benchmarks
 	@echo "$(YELLOW)Running benchmarks...$(NC)"
 	go test -bench=. -benchmem ./...
 
+fuzz: ## Run fuzz tests
+	@echo "$(YELLOW)Running fuzz tests...$(NC)"
+	@echo "$(BLUE)Starting comprehensive fuzz testing suite...$(NC)"
+	@echo "$(BLUE)Testing Consul URL parsing...$(NC)"
+	go test -fuzz=FuzzParseConsulURL -fuzztime=30s .
+	@echo "$(BLUE)Testing key path validation...$(NC)"
+	go test -fuzz=FuzzValidateSecureKeyPath -fuzztime=30s .
+	@echo "$(BLUE)Testing JSON parsing...$(NC)"
+	go test -fuzz=FuzzConsulJSONParsing -fuzztime=30s .
+	@echo "$(BLUE)Testing integrated Load function...$(NC)"
+	go test -fuzz=FuzzConsulLoad -fuzztime=30s .
+	@echo "$(GREEN)All fuzz tests completed successfully!$(NC)"
+
+fuzz-extended: ## Run extended fuzz tests (longer duration)
+	@echo "$(YELLOW)Running extended fuzz tests (5 minutes each)...$(NC)"
+	@echo "$(BLUE)Extended fuzz testing - this will take approximately 20 minutes...$(NC)"
+	@echo "$(BLUE)Testing Consul URL parsing (5m)...$(NC)"
+	go test -fuzz=FuzzParseConsulURL -fuzztime=5m .
+	@echo "$(BLUE)Testing key path validation (5m)...$(NC)"
+	go test -fuzz=FuzzValidateSecureKeyPath -fuzztime=5m .
+	@echo "$(BLUE)Testing JSON parsing (5m)...$(NC)"
+	go test -fuzz=FuzzConsulJSONParsing -fuzztime=5m .
+	@echo "$(BLUE)Testing integrated Load function (5m)...$(NC)"
+	go test -fuzz=FuzzConsulLoad -fuzztime=5m .
+	@echo "$(GREEN)Extended fuzz tests completed successfully!$(NC)"
+
+fuzz-continuous: ## Run continuous fuzz testing (until interrupted)
+	@echo "$(YELLOW)Running continuous fuzz tests (press Ctrl+C to stop)...$(NC)"
+	@echo "$(BLUE)Continuous fuzz testing - press Ctrl+C when satisfied...$(NC)"
+	@trap 'echo "$(GREEN)Continuous fuzzing stopped by user$(NC)"; exit 0' INT; \
+	while true; do \
+		echo "$(BLUE)Round: URL parsing...$(NC)"; \
+		timeout 2m go test -fuzz=FuzzParseConsulURL -fuzztime=1m . || true; \
+		echo "$(BLUE)Round: Key validation...$(NC)"; \
+		timeout 2m go test -fuzz=FuzzValidateSecureKeyPath -fuzztime=1m . || true; \
+		echo "$(BLUE)Round: JSON parsing...$(NC)"; \
+		timeout 2m go test -fuzz=FuzzConsulJSONParsing -fuzztime=1m . || true; \
+		echo "$(BLUE)Round: Load function...$(NC)"; \
+		timeout 2m go test -fuzz=FuzzConsulLoad -fuzztime=1m . || true; \
+		echo "$(GREEN)Completed fuzz round, starting next...$(NC)"; \
+	done
+
+fuzz-report: ## Generate fuzz testing report
+	@echo "$(YELLOW)Generating fuzz test report...$(NC)"
+	@echo "$(BLUE)Fuzz Test Coverage Report for Consul Provider$(NC)" > fuzz_report.txt
+	@echo "=========================================" >> fuzz_report.txt
+	@echo "" >> fuzz_report.txt
+	@echo "Test Functions:" >> fuzz_report.txt
+	@echo "- FuzzParseConsulURL: Tests Consul URL parsing security" >> fuzz_report.txt
+	@echo "- FuzzValidateSecureKeyPath: Tests path traversal prevention" >> fuzz_report.txt
+	@echo "- FuzzConsulJSONParsing: Tests JSON parser resilience" >> fuzz_report.txt
+	@echo "- FuzzConsulLoad: Tests end-to-end Load function" >> fuzz_report.txt
+	@echo "" >> fuzz_report.txt
+	@echo "Security Coverage:" >> fuzz_report.txt
+	@echo "- URL injection and SSRF prevention" >> fuzz_report.txt
+	@echo "- Path traversal attack detection" >> fuzz_report.txt
+	@echo "- Authentication bypass prevention" >> fuzz_report.txt
+	@echo "- JSON parser DoS protection" >> fuzz_report.txt
+	@echo "- Resource exhaustion prevention" >> fuzz_report.txt
+	@echo "" >> fuzz_report.txt
+	@echo "Generated: $(shell date)" >> fuzz_report.txt
+	@echo "$(GREEN)Fuzz report generated: fuzz_report.txt$(NC)"
+
+security-full: security fuzz ## Run complete security testing (static analysis + fuzz)
+	@echo "$(GREEN)Complete security testing finished!$(NC)"
+
 ci: ## Run CI checks (used in GitHub Actions)
 	@echo "$(BLUE)Running CI checks...$(NC)"
 	@make fmt vet lint security test coverage
 	@echo "$(GREEN)CI checks completed successfully!$(NC)"
+
+ci-security: ## Run CI checks with fuzz testing (for security-focused CI)
+	@echo "$(BLUE)Running security-focused CI checks...$(NC)"
+	@make fmt vet lint security test coverage fuzz
+	@echo "$(GREEN)Security CI checks completed successfully!$(NC)"
 
 dev: ## Quick development check (fast feedback loop)
 	@echo "$(BLUE)Running development checks...$(NC)"
@@ -127,6 +207,7 @@ all: clean tools deps check build ## Run everything from scratch
 # Show tool status
 status: ## Show status of installed tools
 	@echo "$(BLUE)Development tools status:$(NC)"
-	@echo -n "staticcheck: "; [ -f "$(TOOLS_DIR)/staticcheck" ] && echo "$(GREEN)✓ installed$(NC)" || echo "$(RED)✗ missing$(NC)"
-	@echo -n "errcheck:    "; [ -f "$(TOOLS_DIR)/errcheck" ] && echo "$(GREEN)✓ installed$(NC)" || echo "$(RED)✗ missing$(NC)"
-	@echo -n "gosec:       "; [ -f "$(TOOLS_DIR)/gosec" ] && echo "$(GREEN)✓ installed$(NC)" || echo "$(RED)✗ missing$(NC)"
+	@echo -n "staticcheck:   "; [ -f "$(TOOLS_DIR)/staticcheck" ] && echo "$(GREEN)✓ installed$(NC)" || echo "$(RED)✗ missing$(NC)"
+	@echo -n "errcheck:      "; [ -f "$(TOOLS_DIR)/errcheck" ] && echo "$(GREEN)✓ installed$(NC)" || echo "$(RED)✗ missing$(NC)"
+	@echo -n "gosec:         "; [ -f "$(TOOLS_DIR)/gosec" ] && echo "$(GREEN)✓ installed$(NC)" || echo "$(RED)✗ missing$(NC)"
+	@echo -n "govulncheck:   "; [ -f "$(TOOLS_DIR)/govulncheck" ] && echo "$(GREEN)✓ installed$(NC)" || echo "$(RED)✗ missing$(NC)"

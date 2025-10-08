@@ -27,6 +27,7 @@ jobs:
       run: |
         go install honnef.co/go/tools/cmd/staticcheck@latest
         go install github.com/securego/gosec/v2/cmd/gosec@latest
+        go install golang.org/x/vuln/cmd/govulncheck@latest
 
     - name: Go Format Check
       run: |
@@ -48,6 +49,11 @@ jobs:
         echo "Running security scan..."
         gosec -conf .gosec.json ./... || true
         echo "Security scan completed"
+
+    - name: Vulnerability Scan (govulncheck)
+      run: |
+        echo "Running vulnerability scan on dependencies..."
+        govulncheck ./...
 
     - name: Test with Race Detection
       run: go test -race -timeout 5m -v ./...

@@ -1,0 +1,136 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.25'
+
+    - name: Install development tools
+      run: make tools
+
+    - name: Run tests
+      run: make test
+
+    - name: Run security checks
+      run: make security
+
+    - name: Run fuzz tests
+      run: make fuzz
+
+    - name: Generate coverage report
+      run: make coverage
+
+    - name: Create source archive
+      run: |
+        mkdir -p dist
+        
+        # Create source tarball excluding .git and other unnecessary files
+        tar --exclude='.git' --exclude='dist' --exclude='*.log' --exclude='coverage.*' \
+            -czf dist/argus-provider-consul-${{ github.ref_name }}-source.tar.gz .
+        
+        # Create checksums
+        cd dist
+        sha256sum * > checksums.txt
+
+    - name: Generate build provenance attestation
+      uses: actions/attest-build-provenance@v1
+      with:
+        subject-path: 'dist/*'
+
+    - name: Generate SBOM
+      run: |
+        # Generate SBOM from Go modules using syft
+        curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+        /usr/local/bin/syft . -o spdx-json=sbom.json
+        
+    - name: Generate SBOM attestation  
+      uses: actions/attest-sbom@v1
+      with:
+        subject-path: 'dist/*'
+        sbom-path: 'sbom.json'
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          dist/*
+          coverage.html
+        body: |
+          ## Argus Consul Provider ${{ github.ref_name }}
+          
+          Official HashiCorp Consul configuration provider for the Argus dynamic configuration framework.
+          
+          ### Installation
+          
+          ```bash
+          go get github.com/agilira/argus-provider-consul@${{ github.ref_name }}
+          ```
+          
+          ### Features
+          
+          - ✅ **Secure Consul Integration**: Enterprise-ready Consul KV store integration
+          - ✅ **Zero-Allocation Performance**: High-performance configuration loading
+          - ✅ **Real-time Configuration**: Live configuration updates with watch capabilities
+          - ✅ **Production Security**: Comprehensive fuzz testing and security validation
+          - ✅ **Type Safety**: Full Go type system integration
+          
+          ### Basic Usage
+          
+          ```go
+          import "github.com/agilira/argus-provider-consul"
+          
+          // Load configuration from Consul
+          config, err := consulprovider.Load("consul://localhost:8500/config/app")
+          if err != nil {
+              log.Fatal(err)
+          }
+          
+          // Use with Argus framework
+          err = argus.LoadFromProvider(consulprovider.New("localhost:8500"))
+          ```
+          
+          ### Security Features
+          
+          - 🛡️ **Path Traversal Protection**: Prevents unauthorized key access
+          - 🛡️ **URL Injection Prevention**: Secure URL parsing and validation  
+          - 🛡️ **Authentication Support**: Full Consul ACL and TLS support
+          - 🛡️ **Fuzz Tested**: Comprehensive security fuzz testing coverage
+          
+          ### Verification
+          
+          Verify release authenticity using GitHub CLI:
+          ```bash
+          gh attestation verify ./argus-provider-consul-* --owner agilira
+          ```
+          
+          ### Compatibility
+          
+          - **Go Version**: 1.25+
+          - **Consul Version**: 1.15+
+          - **Argus Framework**: Compatible with latest Argus releases
+          
+          ### Changes
+          
+          See [CHANGELOG.md](https://github.com/agilira/argus-provider-consul/blob/main/CHANGELOG.md) for detailed changes.
+        generate_release_notes: true
+        draft: false
+        prerelease: false
