@@ -1,6 +1,8 @@
 github.com/DataDog/datadog-go v3.2.0+incompatible/go.mod h1:LButxg5PwREeZtORoXG3tL4fMGNddJ+vMq1mwgfaqoQ=
-github.com/agilira/go-errors v1.1.0 h1:97cBNEDo6q2pKzkr/YqlqWq3fa5rOU8E4LOnSsCmWck=
-github.com/agilira/go-errors v1.1.0/go.mod h1:YEeM2sVXg2w/GmDVZ2m2nH2kJ2Aa34OvbTA6w3JzVbY=
+github.com/agilira/go-errors v1.1.1 h1:angp1yM1HstZMPTNKY/iOID6953QdHAv7lXTgZxF/zU=
+github.com/agilira/go-errors v1.1.1/go.mod h1:PjmCIt/5BO7N8VdM2v4x31Tepo7PjFSWdyEQjB8J/JU=
+github.com/agilira/go-timecache v1.0.2 h1:8tmWsNhhXxmvopotfkX+IBnb+0wpclytdnsA3wPfmk4=
+github.com/agilira/go-timecache v1.0.2/go.mod h1:Td47wj2NGJVCV+G4y+RlfHapluz4STXDeS1cQ1SqKDo=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
 github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
 github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf/go.mod h1:ybxpYRFXyAe+OPACYpWeL0wqObRcbAqCMya13uyzqw0=
