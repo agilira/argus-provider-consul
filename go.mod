@@ -1,10 +1,10 @@
 module github.com/agilira/argus-provider-consul
 
-go 1.25.1
+go 1.25.7
 
 require (
 	github.com/agilira/go-errors v1.1.1
-	github.com/hashicorp/consul/api v1.32.4
+	github.com/hashicorp/consul/api v1.33.4
 )
 
 require (
