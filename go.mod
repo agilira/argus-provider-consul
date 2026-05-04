@@ -3,7 +3,7 @@ module github.com/agilira/argus-provider-consul
 go 1.26
 
 require (
-	github.com/agilira/go-errors v1.1.1
+	github.com/agilira/go-errors v1.1.2
 	github.com/hashicorp/consul/api v1.34.2
 )
 
