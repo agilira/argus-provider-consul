@@ -4,7 +4,7 @@ go 1.26
 
 require (
 	github.com/agilira/go-errors v1.1.2
-	github.com/hashicorp/consul/api v1.34.2
+	github.com/hashicorp/consul/api v1.34.3
 )
 
 require (
