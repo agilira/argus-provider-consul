@@ -1,10 +1,10 @@
 module github.com/agilira/argus-provider-consul
 
-go 1.26
+go 1.26.7
 
 require (
 	github.com/agilira/go-errors v1.1.2
-	github.com/hashicorp/consul/api v1.34.4
+	github.com/hashicorp/consul/api v1.34.5
 )
 
 require (
@@ -25,5 +25,5 @@ require (
 	github.com/mattn/go-isatty v0.0.22 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	golang.org/x/exp v0.0.0-20260218203240-3dfff04db8fa // indirect
-	golang.org/x/sys v0.46.0 // indirect
+	golang.org/x/sys v0.48.0 // indirect
 )
