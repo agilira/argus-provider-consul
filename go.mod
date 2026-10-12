@@ -3,12 +3,12 @@ module github.com/agilira/argus-provider-consul
 go 1.26
 
 require (
-	github.com/agilira/go-errors v1.1.2
+	github.com/agilira/go-errors v1.1.3
 	github.com/hashicorp/consul/api v1.34.4
 )
 
 require (
-	github.com/agilira/go-timecache v1.0.2 // indirect
+	github.com/agilira/go-timecache v1.0.4 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/fatih/color v1.19.0 // indirect
 	github.com/go-viper/mapstructure/v2 v2.5.0 // indirect
